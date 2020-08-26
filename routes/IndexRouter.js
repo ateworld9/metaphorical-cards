@@ -7,6 +7,10 @@ router.get('/', (req, res) => {
   res.render('home');
 });
 
+router.get('/errors', (req, res) => {
+  res.render('errors')
+})
+
 router.get('/logout', async (req, res) => {
   if (req.session.user) {
     await req.session.destroy();

@@ -24,10 +24,9 @@ router.post('/', async (req, res) => {
     });
     await newUser.save();
     req.session.user = newUser;
-    // res.json({ok: 'ok'});
-    res.redirect('/fdsfdsfdsf');
+    res.json({ status: 200 });
   } catch (error) {
-    res.render('errors', { err: 'Пользователь уже существует или данные не верны!' });
+    res.json({ status: "error" })
   }
 })
 
