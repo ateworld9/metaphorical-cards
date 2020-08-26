@@ -1,5 +1,7 @@
 
 import express from 'express';
+import User from '../models/userModel.js';
+import bcrypt from 'bcrypt';
 
 const router = express.Router();
 
@@ -20,7 +22,22 @@ router.get('/logout', async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  res.send('privet')
+  res.render('login')
+})
+
+router.post('/login', async (req, res) => {
+  const { userEmail, userPassword } = req.body;
+  console.log(userEmail, userPassword);
+  try {
+    const findUser = await User.findOne({ userEmail });
+    console.log(findUser);
+    if (findUser && await bcrypt.compare(userPassword, findUser.userPassword)) {
+      req.session.user = findUser;
+      res.json({status: 'success'})
+    }
+  } catch (error) {
+    res.json({status: 'error'})
+  }
 })
 
 export default router;
