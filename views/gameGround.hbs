@@ -44,7 +44,12 @@
         data-interval="10000000">
         <div class="container carousel-inner no-padding ">
           <div class="carousel-item active ">
+            {{#each picturePath1}}
             <div class="col-xs-3 col-sm-3 col-md-3">
+              <img src='{{this}}'>
+            </div>
+            {{/each}}
+            {{!-- <div class="col-xs-3 col-sm-3 col-md-3">
               <img src="img/test-img.jpg">
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -52,15 +57,14 @@
             </div>
             <div class="col-xs-3 col-sm-3 col-md-3">
               <img src="img/test-img.jpg">
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div>
+            </div> --}}
           </div>
           <div class="carousel-item">
+             {{#each picturePath2}}
             <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
+              <img src='{{this}}'>
             </div>
+            {{/each}}
             <div class="col-xs-3 col-sm-3 col-md-3">
               <img src="img/test-img.jpg">
             </div>
@@ -85,10 +89,10 @@
     <div data-spy="scroll" data-target="#list-example" data-offset="0"
       class="scrollspy-example col-4 p-3 min-vh-100 bg-secondary">
       <div class="d-flex justify-content-center p-3 ml-5">
-        <img src="img/test-img.jpg" style="width: 30%; heigth: 50%">
+        <img src='{{coverPath}}' style="width: 30%; heigth: 50%">
       </div>
       <div class="d-flex justify-content-center p-3 ml-5">
-        <img src="img/test-img.jpg" style="width: 30%; heigth: 50%">
+        <img src='{{coverPath2}}' style="width: 30%; heigth: 50%">
       </div>
       <div class="d-flex justify-content-center p-3 ml-5">
         <img src="img/test-img.jpg" style="width: 30%; heigth: 50%">
