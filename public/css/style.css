@@ -1,29 +1,43 @@
 body {
   background-color: blue;
 }
-.arrow {
-  border: solid black;
-  border-width: 0 3px 3px 0;
+#gamecol{
+  margin: 0;
+
+}
+#slideritem{
+  padding: 0;
+}
+#playground{
+  width: 80%;
+}
+#demo{
+  width: 80%;
+}
+
+.wrapper{
+  display: flex;
+  flex-direction: row;
+}
+.card-holder{
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 250px;
+  max-height: 250px;
+}
+
+
+.col-md-3{
   display: inline-block;
-  padding: 3px;
+  margin-left:-4px;
+}
+.col-md-3 img{
+  width:100%;
+  height:auto;
 }
 
-.right {
-  transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
+body .no-padding{
+  padding-left: 0;
+  padding-right: 0;
 }
 
-.left {
-  transform: rotate(135deg);
-  -webkit-transform: rotate(135deg);
-}
-
-.up {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-}
-
-.down {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-}
