@@ -27,16 +27,19 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { userEmail, userPassword } = req.body;
-  console.log(userEmail, userPassword);
+  // console.log(userEmail, userPassword);
   try {
-    const findUser = await User.findOne({ userEmail });
-    console.log(findUser);
+  const findUser = await User.findOne({ userEmail });
+  console.log(findUser);
+  if (!findUser) {
+    throw new Error('user not found');
+  }
     if (findUser && await bcrypt.compare(userPassword, findUser.userPassword)) {
       req.session.user = findUser;
-      res.json({status: 'success'})
+      res.json({loginSuccess: true});
     }
   } catch (error) {
-    res.json({status: 'error'})
+    res.json({loginSuccess: false, errorMessage: error.message})
   }
 })
 
