@@ -1,7 +1,11 @@
 import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 import Card from './models/cardModel.js';
 
-mongoose.connect('mongodb://localhost:27017/metaphorical-cards', {
+dotenv.config();
+
+//'mongodb://localhost:27017/metaphorical-cards'
+mongoose.connect(process.env.MONGO, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

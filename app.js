@@ -1,9 +1,14 @@
+/* eslint-disable import/first */
+/* eslint-disable import/extensions */
 import express from 'express';
 import path from 'path';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import FileStoreGeneral from 'session-file-store';
+import dotenv from 'dotenv';
+// env file
+dotenv.config();
 
 const app = express();
 const FileStore = FileStoreGeneral(session);
@@ -24,7 +29,7 @@ app.use(
   session({
     store: new FileStore(),
     key: 'user_sid',
-    secret: 'kataus litcom po klave',
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
     cookie: {
@@ -41,12 +46,13 @@ app.use('/game', gameRouter);
 
 useErrorHandlers(app);
 
-const port = process.env.PORT ?? 3001;
+const port = process.env.PORT ?? 3000;
 app.listen(port, () => {
   console.log(`${port} is alive!`);
   try {
     mongoose.pluralize(null);
-    mongoose.connect('mongodb://localhost:27017/metaphorical-cards', {
+    // mongodb://localhost:27017/metaphorical-cards
+    mongoose.connect(process.env.MONGO, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
