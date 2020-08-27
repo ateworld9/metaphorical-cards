@@ -10,6 +10,10 @@ import dotenv from 'dotenv';
 // env file
 dotenv.config();
 
+import createDeck from './seed.js';
+
+createDeck();
+
 const app = express();
 const FileStore = FileStoreGeneral(session);
 

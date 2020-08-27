@@ -17,7 +17,7 @@ async function createDeck() {
     deckTitle: 'deck1',
     coverPath: '/img/deck1/cover.jpg',
     picturePath1: ['/img/deck1/1. Phone.jpg', '/img/deck1/2. Flashlight.jpg', '/img/deck1/3. Mirror.jpg', '/img/deck1/4. Book.jpg'],
-    picturePath2: ['/img/deck1/5. Car.jpg', '/img/deck1/6. Elevator.jpg', '/img/deck1/7. Flower.jpg', '/img/deck1/8. Refrigerator.jpg']
+    picturePath2: ['/img/deck1/5. Car.jpg', '/img/deck1/6. Elevator.jpg', '/img/deck1/7. Flower.jpg', '/img/deck1/8. Refrigerator.jpg'],
   });
   const deck2 = await new Card({
     deckTitle: 'deck2',
@@ -30,4 +30,4 @@ async function createDeck() {
   // console.log(deck1);
 }
 
-createDeck();
+export default createDeck;
