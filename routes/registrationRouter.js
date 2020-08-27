@@ -26,8 +26,8 @@ router.post('/', async (req, res) => {
     req.session.user = newUser;
     res.json({ status: 200 });
   } catch (error) {
-    res.json({ status: "error" })
+    res.json({ status: "error" });
   }
-})
+});
 
 export default router;
