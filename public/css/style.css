@@ -1,5 +1,4 @@
 body {
-  background-color: blue;
 }
 #gamecol{
   margin: 0;
@@ -63,7 +62,14 @@ body .no-padding{
 
 .carousel-item-next, .carousel-item-prev, .carousel-item.active {
   display: flex;
-  min-width: 17%;
+  min-width: 15%;
   min-height: 14em;
 }
 
+@media (min-width: 768px) {
+  .col-md-3 {
+      -ms-flex: 0 0 25%;
+      flex: 0 0 25%;
+      max-width: 22%;
+  }
+}
