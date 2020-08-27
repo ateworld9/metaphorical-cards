@@ -45,9 +45,9 @@ router.post('/login', async (req, res) => {
 })
 
 router.get('/test', async (req, res) => {
- let deck1 = await Card.find({ deckTitle: 'deck1'});
- console.log(deck1);
- let { picturePath } = deck1[0];
+ let decks = await Card.find();
+ console.log(decks);
+ let { picturePath } = decks[1];
  res.render('cards', { picturePath })
 })
 
