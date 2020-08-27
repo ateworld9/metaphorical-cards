@@ -46,21 +46,13 @@
       <div id="demo" class="carousel slide  p-3 h-25 fixed-bottom bg-secondary" data-ride="carousel"
         data-interval="10000000">
         <div class="container carousel-inner no-padding ">
+
           <div class="carousel-item active ">
             {{#each picturePath1}}
-            <div class="col-xs-3 col-sm-3 col-md-3">
+            <div class="img-holder col-xs-3 col-sm-3 col-md-3">
               <img class="imgScroll1" src='{{this}}'>
             </div>
             {{/each}}
-            {{!-- <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div> --}}
           </div>
           <div class="carousel-item">
              {{#each picturePath2}}
@@ -68,15 +60,6 @@
               <img class="imgScroll2" src='{{this}}'>
             </div>
             {{/each}}
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src="img/test-img.jpg">1
-            </div>
           </div>
         </div>
         <!-- Left and right controls -->
@@ -108,3 +91,4 @@
   </div>
 
 </div>
+

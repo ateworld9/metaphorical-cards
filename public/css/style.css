@@ -9,10 +9,25 @@ body {
   padding: 0;
 }
 #playground{
+  display: flex;
+  flex-direction: column;
   width: 80%;
 }
 #demo{
   width: 80%;
+}
+.hide{
+opacity: 0.1;
+}
+.carousel-inner{
+  height: 100%;
+}
+.active{
+  height: 100%;
+}
+
+.hovered{
+  background-color: #d1d8e2;
 }
 
 .wrapper{
@@ -20,24 +35,35 @@ body {
   flex-direction: row;
 }
 .card-holder{
-  min-width: 200px;
-  max-width: 200px;
-  min-height: 250px;
-  max-height: 250px;
+  min-width: 17%;
+  max-width: 17%;
+  min-height: 17em;
+  max-height: 100%;
 }
-
-
 .col-md-3{
   display: inline-block;
   margin-left:-4px;
 }
 .col-md-3 img{
   width:100%;
-  height:auto;
+  height:100%;
 }
+/* .img-holder{
+  width: 100%;
+  585a5c
+  height:65%;
+} */
+
+
 
 body .no-padding{
   padding-left: 0;
   padding-right: 0;
+}
+
+.carousel-item-next, .carousel-item-prev, .carousel-item.active {
+  display: flex;
+  min-width: 17%;
+  min-height: 14em;
 }
 
