@@ -2,6 +2,7 @@ const LoginForm = document.getElementById('LoginForm')
 
 LoginForm.addEventListener('submit', async (event) => {
   event.preventDefault()
+  // console.log(event.target);
   const userEmail = document.getElementById('userEmail')
   const userPassword = document.getElementById('userPassword');
   const resp = await fetch('/login', {
@@ -16,5 +17,9 @@ LoginForm.addEventListener('submit', async (event) => {
   })
   const respose = await resp.json()
   console.log(respose);
-  window.location.assign(`/`);
+  if (respose.loginSuccess) {
+    window.location.assign(`/game`);
+  } else {
+    window.location.assign(`/errors`);
+  }
 })

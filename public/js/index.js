@@ -19,7 +19,7 @@ doThis.addEventListener('submit', async (even) => {
   const resp = await response.json()
   console.log(resp);
   if (resp.status == 'error') {
-    window.location.assign(`/`);
+    window.location.assign(`/errors`);
   }
   if (resp.status == 200) {
     window.location.assign(`/game`);
