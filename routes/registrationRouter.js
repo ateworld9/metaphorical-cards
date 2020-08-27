@@ -18,7 +18,7 @@ router.post('/', async (req, res) => {
   } = req.body;
   try {
     const newUser = new User({
-      userName: userName,
+      userName,
       userPassword: await bcrypt.hash(userPassword, 10),
       userEmail,
     });
@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
     req.session.user = newUser;
     res.json({ status: 200 });
   } catch (error) {
-    res.json({ status: "error" });
+    res.json({ status: 'error' });
   }
 });
 
