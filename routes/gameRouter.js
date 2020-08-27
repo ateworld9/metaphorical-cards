@@ -14,7 +14,17 @@ router.route('/')
     let picturePath12 = deck2[0].picturePath1;
     let picturePath22 = deck2[0].picturePath2;
     let coverPath2 = deck2[0].coverPath;
-    res.render('gameGround', { picturePath1, picturePath2, coverPath, picturePath12, picturePath22, coverPath2 })
-  })
+    let deck2Id = deck2[0]._id.toString();
+    // console.log(typeof deck2Id);
+    res.render('gameGround', { picturePath1, picturePath2, coverPath, picturePath12, picturePath22, coverPath2, deck2Id })
+  });
+
+router.get('/:id', async (req, res) => {
+  let deck = await Card.find({ _id: req.params.id });
+  // console.log(deck);
+  let { picturePath1, picturePath2 } = deck[0];
+  // console.log(picturePath1, picturePath2);
+  res.json({ picturePath1, picturePath2 })
+})
 
 export default router;

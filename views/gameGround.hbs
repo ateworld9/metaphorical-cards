@@ -1,4 +1,5 @@
 <script defer src="/js/gamelogic.js"></script>
+<script defer src="/js/chooseDeck.js"></script>
 <div class="container-fluid">
   <div class="row">
     <div id="gamecol" class="col-8">
@@ -40,13 +41,15 @@
           </div>
         </div>
       </div>
+
+
       <div id="demo" class="carousel slide  p-3 h-25 fixed-bottom bg-secondary" data-ride="carousel"
         data-interval="10000000">
         <div class="container carousel-inner no-padding ">
           <div class="carousel-item active ">
             {{#each picturePath1}}
             <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src='{{this}}'>
+              <img class="imgScroll1" src='{{this}}'>
             </div>
             {{/each}}
             {{!-- <div class="col-xs-3 col-sm-3 col-md-3">
@@ -62,7 +65,7 @@
           <div class="carousel-item">
              {{#each picturePath2}}
             <div class="col-xs-3 col-sm-3 col-md-3">
-              <img src='{{this}}'>
+              <img class="imgScroll2" src='{{this}}'>
             </div>
             {{/each}}
             <div class="col-xs-3 col-sm-3 col-md-3">
@@ -76,7 +79,6 @@
             </div>
           </div>
         </div>
-
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#demo" data-slide="prev">
           <span class="carousel-control-prev-icon"></span>
@@ -85,14 +87,16 @@
           <span class="carousel-control-next-icon"></span>
         </a>
       </div>
+
+
     </div>
-    <div data-spy="scroll" data-target="#list-example" data-offset="0"
+    <div id="vertScroll" data-spy="scroll" data-target="#list-example" data-offset="0"
       class="scrollspy-example col-4 p-3 min-vh-100 bg-secondary">
       <div class="d-flex justify-content-center p-3 ml-5">
         <img src='{{coverPath}}' style="width: 30%; heigth: 50%">
       </div>
       <div class="d-flex justify-content-center p-3 ml-5">
-        <img src='{{coverPath2}}' style="width: 30%; heigth: 50%">
+        <img id={{deck2Id}} src='{{coverPath2}}' style="width: 30%; heigth: 50%">
       </div>
       <div class="d-flex justify-content-center p-3 ml-5">
         <img src="img/test-img.jpg" style="width: 30%; heigth: 50%">
