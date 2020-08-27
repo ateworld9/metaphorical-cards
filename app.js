@@ -13,6 +13,7 @@ import useErrorHandlers from './middleware/error-handlers.js';
 import sessionLocals from './middleware/sessionLocals.js';
 import indexRouter from './routes/IndexRouter.js';
 import registrationRouter from './routes/registrationRouter.js';
+import gameRouter from './routes/gameRouter.js';
 
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(process.env.PWD, 'public')));
@@ -31,24 +32,25 @@ app.use(
       expires: 1000 * 60 * 60 * 24 * 365,
     },
   }),
-  );
-  
-  app.use(sessionLocals);
-  // app.use(cookiesCleaner);
-  app.use('/', indexRouter);
-  app.use('/registration', registrationRouter)
-  
+);
+
+app.use(sessionLocals);
+// app.use(cookiesCleaner);
+app.use('/', indexRouter);
+app.use('/registration', registrationRouter)
+app.use('/game', gameRouter)
+
 useErrorHandlers(app);
 
-const port = process.env.PORT ?? 3000;
+const port = process.env.PORT ?? 3001;
 app.listen(port, () => {
   console.log(`${port} is alive!`);
   try {
     mongoose.pluralize(null);
     mongoose.connect("mongodb://localhost:27017/metaphorical-cards", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  });
+      useNewUrlParser: true,
+      useUnifiedTopology: true
+    });
   } catch (error) {
     console.log('Db connection failed', error);
   }
