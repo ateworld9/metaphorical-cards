@@ -1,6 +1,6 @@
 const sessionUserChecker = (req, res, next) => {
   if (req.session.user) {
-    res.redirect("/");
+    res.redirect("/game");
   } else {
     next();
   }

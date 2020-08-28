@@ -1,8 +1,13 @@
 
 import express from 'express';
 import bcrypt from 'bcrypt';
+
 import User from '../models/userModel.js';
+
+
+import sessionUserChecker from '../middleware/sessionUserChecker.js';
 import Card from '../models/cardModel.js';
+
 
 const router = express.Router();
 
@@ -22,9 +27,11 @@ router.get('/logout', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
-  res.render('login');
-});
+
+router.get('/login', sessionUserChecker, (req, res) => {
+  res.render('login')
+})
+
 
 router.post('/login', async (req, res) => {
   const { userEmail, userPassword } = req.body;
