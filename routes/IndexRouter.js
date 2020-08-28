@@ -6,7 +6,7 @@ import User from '../models/userModel.js';
 import Psyholog from '../models/psyhologModel.js';
 
 
-import sessionUserChecker from '../middleware/sessionUserChecker.js';
+import { sessionUserChecker, sessionUserUnChecker } from '../middleware/sessionUserChecker.js';
 import Card from '../models/cardModel.js';
 
 
@@ -24,9 +24,9 @@ router.get('/logout', async (req, res) => {
   if (req.session.user) {
     await req.session.destroy();
     res.clearCookie('user_sid');
-    res.redirect('/');
+    res.redirect('/login');
   }
-});
+  });
 
 
 router.get('/login', sessionUserChecker, (req, res) => {
