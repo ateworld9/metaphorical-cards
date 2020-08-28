@@ -1,9 +1,17 @@
 const sessionUserChecker = (req, res, next) => {
-  if (req.session.user) {
+  if (req.user) {
     res.redirect("/game");
   } else {
     next();
   }
 };
 
-export default sessionUserChecker;
+const sessionUserUnChecker = (req, res, next) => {
+  if (!req.user) {
+    res.redirect("/");
+  } else {
+    next();
+  }
+};
+
+export { sessionUserChecker, sessionUserUnChecker };

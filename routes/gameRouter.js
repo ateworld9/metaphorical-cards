@@ -1,9 +1,11 @@
 import express from 'express';
 import Card from '../models/cardModel.js';
 
+import { sessionUserChecker, sessionUserUnChecker } from '../middleware/sessionUserChecker.js';
+
 const router = express.Router();
 
-router.route('/')
+router.route('/', sessionUserUnChecker)
   .get(async (req, res) => {
     const deck1 = await Card.find({ deckTitle: 'deck1' });
     // console.log(deck1);
@@ -29,7 +31,7 @@ router.route('/')
     });
   });
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', sessionUserUnChecker, async (req, res) => {
   const deck = await Card.find({ _id: req.params.id });
   // console.log(deck);
   const { picturePath1, picturePath2 } = deck[0];
