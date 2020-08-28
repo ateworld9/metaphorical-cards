@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 
 const psyhologScheme = mongoose.Schema({
-  psyhoglogName: String,
-  psyhoglogPassword: {
+  psyhologName: String,
+  psyhologPassword: {
     type: String,
     // required: [true, 'Введите логин'],
   },
-  psyhoglogEmail: {
+  psyhologEmail: {
     type: String,
     // unique: [true, 'Эта почта уже зарегестрирована'],
     // required: true,
@@ -23,7 +23,7 @@ psyhologScheme.statics.findOrCreate = function findOrCreate(profile, cb) {
   // req.session.user = userObj;
   this.findOne({ _id: profile.id }, (err, result) => {
     if (!result) {
-      psyhologObj.psyhoglogName = profile.displayName;
+      psyhologObj.psyhologgName = profile.displayName;
       // ....
       psyhologObj.save(cb);
       // console.log(req.session);

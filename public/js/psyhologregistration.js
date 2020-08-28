@@ -2,9 +2,9 @@ const doThis = document.getElementById('regForm');
 
 doThis.addEventListener('submit', async (even) => {
   even.preventDefault();
-  console.log(event.target.userName.value);
+  console.log(even.target.userName.value);
 
-  const response = await fetch('/registration', {
+  const response = await fetch('/psyhologregistration', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -23,4 +23,4 @@ doThis.addEventListener('submit', async (even) => {
   if (resp.status == 200) {
     window.location.assign('/game');
   }
-});
+})
