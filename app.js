@@ -7,63 +7,57 @@ import session from 'express-session';
 import FileStoreGeneral from 'session-file-store';
 
 import passport from 'passport';
-// import passportSession from 'passport-session';
-// const GitHubStrategy = 
 
-const app = express();
-const FileStore = FileStoreGeneral(session);
-dotenv.config();
-
+import VKontakteStr from 'passport-vkontakte';
 import User from './models/userModel.js';
 import useErrorHandlers from './middleware/error-handlers.js';
 import sessionLocals from './middleware/sessionLocals.js';
 import indexRouter from './routes/IndexRouter.js';
 import registrationRouter from './routes/registrationRouter.js';
 import gameRouter from './routes/gameRouter.js';
+// import passportSession from 'passport-session';
+// const GitHubStrategy =
 
-import VKontakteStr from 'passport-vkontakte';
+const app = express();
+const FileStore = FileStoreGeneral(session);
+dotenv.config();
+
 const VKontakteStrategy = VKontakteStr.Strategy;
 
 passport.use(new VKontakteStrategy({
   clientID: process.env.VKONTAKTE_CLIENT_ID,
   clientSecret: process.env.VKONTAKTE_CLIENT_SECRET,
-  callbackURL: process.env.VKONTAKTE_CALLBACK_URL
+  callbackURL: process.env.VKONTAKTE_CALLBACK_URL,
 },
-async function (accessToken, refreshToken, params, profile, done) {
-  console.log('profile', profile);
-  // console.log('tokken', accessToken );
-  const user = await User.findOrCreate(profile, function (err, user) {
-    // console.log(user);
-    return done(err, user);
-  });
-  return user
-}
-
-));
+  (async (accessToken, refreshToken, params, profile, done) => {
+    console.log('profile', profile);
+    // console.log('tokken', accessToken );
+    const user = await User.findOrCreate(profile, (err, user) =>
+      // console.log(user);
+      done(err, user));
+    return user;
+  })));
 
 app.get('/auth/vkontakte',
 
   passport.authenticate('vkontakte'),
   // function(req, res){
-    //   console.log('!!!!!!!');
-    // }
-    );
-    
-    app.get('/auth/vkontakte/callback',
-    passport.authenticate('vkontakte', { 
-      failureRedirect: '/login',
-      // successRedirect: '/game',
-      session: false
-    }),
-    function(req, res) {
-      console.log(req.user,'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-      console.log(req.session);
-      res.redirect('/game');
-        // req.session.user = req.user;
+  //   console.log('!!!!!!!');
+  // }
+);
+
+app.get('/auth/vkontakte/callback',
+  passport.authenticate('vkontakte', {
+    failureRedirect: '/login',
+    // successRedirect: '/game',
+    session: false,
+  }),
+  (req, res) => {
+    console.log(req.user, '>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    // console.log(req.session);
+    res.redirect('/game');
+    // req.session.user = req.user;
   });
-
-
-
 
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(process.env.PWD, 'public')));
@@ -103,7 +97,7 @@ app.use(
 
 //       return done(null, user)
 //     }
-// } 
+// }
 // ));
 
 // app.get('/login/github',
