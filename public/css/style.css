@@ -73,3 +73,31 @@ body .no-padding{
       max-width: 22%;
   }
 }
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+}
+
+.centerImage {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.vkPngLogin {
+  width: 50px;
+}
+.camera{
+width: 5em;
+}
+.camera img{
+  width: 100%;
+}
+#trashIcon{
+width: 90%;
+height: 90%;
+}

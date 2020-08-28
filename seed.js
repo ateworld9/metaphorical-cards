@@ -2,11 +2,12 @@ import mongoose from 'mongoose';
 import Card from './models/cardModel.js';
 
 mongoose.connect('mongodb://localhost:27017/metaphorical-cards', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
 });
+
 
 async function createDeck () {
 let deck1 = await new Card ({
@@ -49,6 +50,7 @@ await deck5.save();
 await deck6.save();
 await deck7.save();
 // console.log(deck1);
+
 }
 
 createDeck();
