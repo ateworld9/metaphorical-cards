@@ -5,28 +5,30 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import FileStoreGeneral from 'session-file-store';
-
 import passport from 'passport';
 
-const app = express();
-const FileStore = FileStoreGeneral(session);
-dotenv.config();
-
+import VKontakteStr from 'passport-vkontakte';
 import User from './models/userModel.js';
 import useErrorHandlers from './middleware/error-handlers.js';
 import sessionLocals from './middleware/sessionLocals.js';
 import indexRouter from './routes/IndexRouter.js';
 import registrationRouter from './routes/registrationRouter.js';
 import gameRouter from './routes/gameRouter.js';
+// import passportSession from 'passport-session';
+// const GitHubStrategy =
 
-import VKontakteStr from 'passport-vkontakte';
+const app = express();
+const FileStore = FileStoreGeneral(session);
+dotenv.config();
+
 const VKontakteStrategy = VKontakteStr.Strategy;
 
 passport.use(new VKontakteStrategy({
   clientID: process.env.VKONTAKTE_CLIENT_ID,
   clientSecret: process.env.VKONTAKTE_CLIENT_SECRET,
-  callbackURL: process.env.VKONTAKTE_CALLBACK_URL
+  callbackURL: process.env.VKONTAKTE_CALLBACK_URL,
 },
+
 async function (accessToken, refreshToken, params, profile, done) {
   // console.log('profile', profile);
   const user = await User.findOrCreate(profile, function (err, user) {
@@ -56,13 +58,14 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.get('/auth/vkontakte',
 
   passport.authenticate('vkontakte'),
   // function(req, res){
-    //   console.log('!!!!!!!');
-    // }
-    );
+  //   console.log('!!!!!!!');
+  // }
+  );
     
     app.get('/auth/vkontakte/callback',
     passport.authenticate('vkontakte', { 
@@ -74,6 +77,7 @@ app.get('/auth/vkontakte',
       // console.log(req.session);
       res.redirect('/game');
   });
+
 
 app.use(sessionLocals);
 app.use('/', indexRouter);
