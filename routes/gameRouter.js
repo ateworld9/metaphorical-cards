@@ -19,6 +19,16 @@ router.route('/', sessionUserUnChecker)
     const coverPath2 = deck2[0].coverPath;
     const deck2Id = deck2[0]._id.toString();
     // console.log(typeof deck2Id);
+    const deck3 = await Card.find({ deckTitle: 'deck3' });
+    const coverPath3 = deck3[0].coverPath;
+    const deck4 = await Card.find({ deckTitle: 'deck4' });
+    const coverPath4 = deck4[0].coverPath;
+    const deck5 = await Card.find({ deckTitle: 'deck5' });
+    const coverPath5 = deck5[0].coverPath;
+    const deck6 = await Card.find({ deckTitle: 'deck6' });
+    const coverPath6 = deck6[0].coverPath;
+    const deck7 = await Card.find({ deckTitle: 'deck7' });
+    const coverPath7 = deck7[0].coverPath;
     res.render('gameGround', {
       picturePath1,
       picturePath2,
@@ -28,6 +38,11 @@ router.route('/', sessionUserUnChecker)
       coverPath2,
       deck2Id,
       deck1Id,
+      coverPath3,
+      coverPath4,
+      coverPath5,
+      coverPath6,
+      coverPath7
     });
   });
 

@@ -3,6 +3,7 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 
 import User from '../models/userModel.js';
+import Psyholog from '../models/psyhologModel.js';
 
 
 import { sessionUserChecker, sessionUserUnChecker } from '../middleware/sessionUserChecker.js';
@@ -44,6 +45,28 @@ router.post('/login', async (req, res) => {
     }
     if (findUser && await bcrypt.compare(userPassword, findUser.userPassword)) {
       req.session.user = findUser;
+      res.json({ loginSuccess: true });
+    }
+  } catch (error) {
+    res.json({ loginSuccess: false, errorMessage: error.message });
+  }
+});
+
+router.get('/psyhologlogin', sessionUserChecker, (req, res) => {
+  res.render('psyhologlogin');
+});
+
+router.post('/psyhologlogin', async (req, res) => {
+  const { PsyhologEmail, PsyhologPassword } = req.body;
+  // console.log(PsyhologEmail, PsyhologPassword);
+  try {
+    const findPsyholog = await Psyholog.findOne({ PsyhologEmail });
+    console.log(findPsyholog);
+    if (!findPsyholog) {
+      throw new Error('Psyholog not found');
+    }
+    if (findPsyholog && await bcrypt.compare(PsyhologPassword, findPsyholog.PsyhologPassword)) {
+      req.session.Psyholog = findPsyholog;
       res.json({ loginSuccess: true });
     }
   } catch (error) {
