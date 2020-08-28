@@ -45,7 +45,7 @@ const dragAndDrop = () => {
 dragAndDrop();
 
 const dragAndDropOut = () => {
-  const playGround = document.querySelector('#playground');
+  const playGround = document.querySelector('#playground-2');
   let newCard;
 
   playGround.addEventListener('dragstart', (event) => {
