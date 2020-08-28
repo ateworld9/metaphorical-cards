@@ -60,10 +60,28 @@ const dragAndDropOut = () => {
       event.target.classList.remove('hide');
     }
   });
+  const trashCan = document.querySelector('#trashCan');
+  trashCan.addEventListener('dragover', (event) => {
+    event.preventDefault();
+  });
+
+  trashCan.addEventListener('dragenter', function () {
+    this.classList.add('hovered');
+  });
+  trashCan.addEventListener('dragleave', (event) => {
+    console.log(event.target);
+    event.target.classList.remove('hovered');
+  });
+  trashCan.addEventListener('drop', function (event) {
+    this.classList.remove('hovered');
+    newCard.classList.remove('hide');
+    newCard.remove();
+    newCard = '';
+  });
+
   const imgHolders = document.querySelectorAll('.img-holder');
   imgHolders.forEach((holder) => {
     holder.addEventListener('dragover', (event) => {
-      console.log(1);
       event.preventDefault();
     });
     holder.addEventListener('dragenter', function (event) {

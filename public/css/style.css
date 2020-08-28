@@ -91,3 +91,13 @@ body .no-padding{
 .vkPngLogin {
   width: 50px;
 }
+.camera{
+width: 5em;
+}
+.camera img{
+  width: 100%;
+}
+#trashIcon{
+width: 90%;
+height: 90%;
+}
