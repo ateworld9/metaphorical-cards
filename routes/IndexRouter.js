@@ -2,7 +2,11 @@
 import express from 'express';
 import User from '../models/userModel.js';
 import bcrypt from 'bcrypt';
+
 import sessionUserChecker from '../middleware/sessionUserChecker.js';
+
+import Card from '../models/cardModel.js';
+
 
 const router = express.Router();
 
@@ -42,6 +46,13 @@ router.post('/login', async (req, res) => {
   } catch (error) {
     res.json({loginSuccess: false, errorMessage: error.message})
   }
+})
+
+router.get('/test', async (req, res) => {
+ let decks = await Card.find();
+ console.log(decks);
+ let { picturePath } = decks[1];
+ res.render('cards', { picturePath })
 })
 
 export default router;

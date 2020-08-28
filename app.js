@@ -125,8 +125,8 @@ app.use(
 app.use(sessionLocals);
 // app.use(cookiesCleaner);
 app.use('/', indexRouter);
-app.use('/registration', registrationRouter)
-app.use('/game', gameRouter)
+app.use('/registration', registrationRouter);
+app.use('/game', gameRouter);
 
 useErrorHandlers(app);
 
@@ -137,7 +137,7 @@ app.listen(port, () => {
     mongoose.pluralize(null);
     mongoose.connect("mongodb://localhost:27017/metaphorical-cards", {
       useNewUrlParser: true,
-      useUnifiedTopology: true
+      useUnifiedTopology: true,
     });
   } catch (error) {
     console.log('Db connection failed', error);
