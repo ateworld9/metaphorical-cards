@@ -13,7 +13,6 @@ const app = express();
 const FileStore = FileStoreGeneral(session);
 dotenv.config();
 
-
 import VKontakteStr from 'passport-vkontakte';
 
 import User from './models/userModel.js';
@@ -36,14 +35,14 @@ passport.use(new VKontakteStrategy({
   callbackURL: process.env.VKONTAKTE_CALLBACK_URL,
 },
 
-async function (accessToken, refreshToken, params, profile, done) {
-  // console.log('profile', profile);
-  const user = await User.findOrCreate(profile, function (err, user) {
-    // console.log(user);
-    return done(err, user);
-  });
-  return user
-}
+  async function (accessToken, refreshToken, params, profile, done) {
+    // console.log('profile', profile);
+    const user = await User.findOrCreate(profile, function (err, user) {
+      // console.log(user);
+      return done(err, user);
+    });
+    return user
+  }
 
 ));
 app.set('view engine', 'hbs');
@@ -65,24 +64,23 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
-
 app.get('/auth/vkontakte',
 
   passport.authenticate('vkontakte'),
   // function(req, res){
   //   console.log('!!!!!!!');
   // }
-  );
-    
-    app.get('/auth/vkontakte/callback',
-    passport.authenticate('vkontakte', { 
-      failureRedirect: '/login',
-      session: false
-    }),
-    function(req, res) {
-      // console.log(req.user,'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-      // console.log(req.session);
-      res.redirect('/game');
+);
+
+app.get('/auth/vkontakte/callback',
+  passport.authenticate('vkontakte', {
+    failureRedirect: '/login',
+    session: false
+  }),
+  function (req, res) {
+    // console.log(req.user,'>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
+    // console.log(req.session);
+    res.redirect('/game');
   });
 
 
