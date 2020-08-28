@@ -5,8 +5,8 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import session from 'express-session';
 import FileStoreGeneral from 'session-file-store';
-
 import passport from 'passport';
+
 
 const app = express();
 const FileStore = FileStoreGeneral(session);
@@ -18,6 +18,7 @@ import sessionLocals from './middleware/sessionLocals.js';
 import indexRouter from './routes/IndexRouter.js';
 import registrationRouter from './routes/registrationRouter.js';
 import gameRouter from './routes/gameRouter.js';
+import callRouter from './routes/callRouter.js';
 
 import VKontakteStr from 'passport-vkontakte';
 const VKontakteStrategy = VKontakteStr.Strategy;
@@ -79,6 +80,7 @@ app.use(sessionLocals);
 app.use('/', indexRouter);
 app.use('/registration', registrationRouter);
 app.use('/game', gameRouter);
+app.use('/call', callRouter);
 
 useErrorHandlers(app);
 
