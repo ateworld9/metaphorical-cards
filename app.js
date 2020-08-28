@@ -21,6 +21,7 @@ import sessionLocals from './middleware/sessionLocals.js';
 import indexRouter from './routes/IndexRouter.js';
 import registrationRouter from './routes/registrationRouter.js';
 import gameRouter from './routes/gameRouter.js';
+import deckRouter from './routes/deckRouter.js';
 
 import callRouter from './routes/callRouter.js';
 
@@ -88,6 +89,7 @@ app.use(sessionLocals);
 app.use('/', indexRouter);
 app.use('/registration', registrationRouter);
 app.use('/game', gameRouter);
+app.use('/deck', deckRouter);
 app.use('/call', callRouter);
 
 useErrorHandlers(app);
