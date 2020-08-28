@@ -11,10 +11,6 @@ const userScheme = mongoose.Schema({
     unique: [true, 'Эта почта уже зарегестрирована'],
     required: true,
   },
-  scrf_token: {
-    type: String,
-  },
-  vkontakteId: String,
 });
 
 export default mongoose.model("users", userScheme);
