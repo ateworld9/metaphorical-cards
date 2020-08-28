@@ -63,6 +63,7 @@ const dragAndDropOut = () => {
   const imgHolders = document.querySelectorAll('.img-holder');
   imgHolders.forEach((holder) => {
     holder.addEventListener('dragover', (event) => {
+      console.log(1);
       event.preventDefault();
     });
     holder.addEventListener('dragenter', function (event) {
