@@ -2,6 +2,7 @@
 import express from 'express';
 import User from '../models/userModel.js';
 import bcrypt from 'bcrypt';
+import sessionUserChecker from '../middleware/sessionUserChecker.js';
 
 const router = express.Router();
 
@@ -21,7 +22,7 @@ router.get('/logout', async (req, res) => {
   }
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', sessionUserChecker, (req, res) => {
   res.render('login')
 })
 
