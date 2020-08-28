@@ -1,3 +1,5 @@
+import dragAndDropOut from './gamelogic.js';
+
 const chooseDeck = document.getElementById('vertScroll');
 // console.log(chooseDeck);
 
@@ -18,6 +20,7 @@ if (chooseDeck) {
       const render = Handlebars.compile(template);
       const element = render({ picturePath1, picturePath2 });
       carouselContainer.innerHTML = element;
+      dragAndDropOut();
       // const imgScroll1 = document.getElementsByClassName('imgScroll1');
       // for (let i = 0; i < imgScroll1.length; i += 1) {
       //   imgScroll1[i].src = result.picturePath1[i];

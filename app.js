@@ -1,4 +1,3 @@
-
 import express from 'express';
 import path from 'path';
 import dotenv from 'dotenv';
@@ -135,11 +134,11 @@ app.listen(port, () => {
   console.log(`${port} is alive!`);
   try {
     mongoose.pluralize(null);
-    mongoose.connect("mongodb://localhost:27017/metaphorical-cards", {
+    mongoose.connect('mongodb://localhost:27017/metaphorical-cards', {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
   } catch (error) {
     console.log('Db connection failed', error);
   }
-})
+});
