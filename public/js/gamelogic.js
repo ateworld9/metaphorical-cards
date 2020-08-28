@@ -87,3 +87,5 @@ const dragAndDropOut = () => {
   });
 };
 dragAndDropOut();
+
+export default dragAndDropOut;
